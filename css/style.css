@@ -30,7 +30,7 @@ img{
     align-items: center;
     overflow: hidden;
 }
-.login_form{
+.login_form, .register_form{
     width: 420px;
     height: auto;
     padding: 30px;
@@ -124,14 +124,7 @@ img{
 .password_eye.active i::before{
     content: "\f070";
 }
-.form_input:focus ~ .form_label, .form_label.filled{
-    top: -1px;
-    left: 10px;
-    color: #9900ff;
-    font-size: 14px;
-    font-weight: 700;
-}
-.form_input:required.form_input:valid ~ .form_label, .form_label.filled{
+.form_input:focus ~ .form_label, .form_label.filled, .form_input:valid ~ .form_label{
     top: -1px;
     left: 10px;
     color: #9900ff;
@@ -540,4 +533,12 @@ img{
 }
 .form_message:hover, .form_message:focus{
     border-color: #9900ff;
+}
+.phpMessage{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    font-style: italic;
+    color: #630036;
+    padding-top: 10px;
 }

@@ -30,6 +30,7 @@ class imgUploader {
                 }
                 formCancel.addEventListener('click', function(){
                     formImg.src = "";
+                    imgUploader.value = ''; 
                     formWrapper.classList.remove('active');
                 })
                 reader.readAsDataURL(formFile);
@@ -54,21 +55,21 @@ class imgUploader {
                     passwords[i].type = 'password';
                 }      
             });
-            passwords[i].addEventListener('input', function(){
-                if (passwords[i].value.length > 5) {   
-                    if (passwords[0].value != passwords[1].value) {
-                        submitBtn.disabled = true;
-                        passwordMatch.style.display = 'block'
-                    } else{
-                        submitBtn.disabled = false;
-                        passwordMatch.style.display = 'none'
-                    }
-                    passwordWarn.style.display = 'none'
-                } else{
-                    passwordWarn.style.display = 'block'
-                    submitBtn.disabled = true;
-                }
-            });
+            // passwords[i].addEventListener('input', function(){
+            //     if (passwords[i].value.length > 5) {   
+            //         if (passwords[0].value != passwords[1].value) {
+            //             submitBtn.disabled = true;
+            //             passwordMatch.style.display = 'block'
+            //         } else{
+            //             submitBtn.disabled = false;
+            //             passwordMatch.style.display = 'none'
+            //         }
+            //         passwordWarn.style.display = 'none'
+            //     } else{
+            //         passwordWarn.style.display = 'block'
+            //         submitBtn.disabled = true;
+            //     }
+            // });
         }
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].addEventListener('input', function(){
