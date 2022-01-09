@@ -18,15 +18,15 @@ include_once('header.php');
                         <p class="profile_status"><?= $profile['status']?></p>
                     </div>
                 </div>
-                <a href="#" class="btn logout">Log out</a>
+                <a href="../components/log-out.php?user_id=<?= $profile['user_id']?>" class="btn logout"><?= $lang=='uz' ? "Chiqish" : "Log out"?></a>
             </div>
             <div class="search">
                 <div class="search_field">
-                    <input type="text" name="search" class="form_search" tabindex="-1" placeholder="Search users...">
+                    <input type="text" name="search" class="form_search" tabindex="-1" placeholder="<?= $lang=='uz' ? "Qidirish" : "Search"?>...">
                     <span class="search_icon"><i class="fas fa-search"></i></span>
                     <span class="search_cancel"><i class="fas fa-times"></i></span>
                 </div>
-                <p class="search_text">Select an user to start Chat</p>
+                <p class="search_text"><?= $lang=='uz' ? "Chatni boshlash uchun ro'yxatdan tanlang" : "Select an user to start Chat"?></p>
             </div>
             <div class="user_list"></div>
             <span class="phpMessage"></span>

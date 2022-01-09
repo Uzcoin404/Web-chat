@@ -23,12 +23,14 @@ img{
 
 /* Register for chat */
 .wrapper{
+    position: relative;
     width: 100%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-image: linear-gradient(90deg,rgba(255,255,255,0),#fff 40%,#fff 60%,rgba(255,255,255,0)),repeating-linear-gradient(-45deg,transparent 0,transparent 2.5em,#daaafa 0,#daaafa calc(2.5em + 1.25px)),repeating-linear-gradient(45deg,transparent 0,transparent 2.5em,#daaafa 0,#daaafa calc(2.5em + 1.25px));
 }
 .login_form, .register_form{
     width: 420px;
@@ -36,6 +38,7 @@ img{
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 20px;
+    background: #fff;
 }
 .form_steps{
     width: 100%;
@@ -296,6 +299,7 @@ img{
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 20px;
+    background: #fff;
 }
 .header, .user{
     width: 100%;
@@ -325,7 +329,7 @@ img{
     color: #9900ff;
 }
 .logout{
-    width: 140px;
+    width: 120px;
 }
 .search{
     display: flex;
@@ -541,4 +545,90 @@ img{
     font-style: italic;
     color: #630036;
     padding-top: 10px;
+}
+
+/* Main introduce page */
+
+.introduce{
+    width: 420px;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 20px;
+    background: #fff;
+    padding: 30px;
+}
+.introduce_content{
+    overflow: hidden;
+
+}
+.intr_pages{
+    display: flex;
+    width: 200%;
+}
+.intr_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .3s;
+    max-width: 360px;
+}
+.introduce.active .welcome {
+    margin-left: -50%;
+}
+.introduce_title{
+    font-size: 32px;
+    font-weight: 700;
+    padding-bottom: 30px;
+    text-align: center;
+    line-height: 32px;
+}
+.introduce_logo{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;    
+}
+.app_info_text{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    color: #454545;
+    padding: 20px 0;
+}
+.skills{
+    font-weight: 500;
+    line-height: 24px;
+    color: #454545;
+    padding-bottom: 8px;
+}
+#skills_icon{
+    padding-right: 5px;
+    color: rgb(0, 206, 0);
+    font-size: 18px;
+}
+.begin_btn{
+    margin-top: 15px;
+}
+
+/* Language */
+
+.language{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.language a{
+    padding: 15px;
+    background: #fff;
+    color: #9900ff;
+}
+.language a.active{
+    background: #9900ff;
+    color: #fff;
 }

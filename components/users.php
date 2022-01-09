@@ -1,7 +1,7 @@
 <?
 include_once('db.php');
-$sql = mysqli_query($conn, "SELECT * FROM users");
 $sender_id = $_SESSION['user_id'];
+$sql = mysqli_query($conn, "SELECT * FROM users WHERE NOT user_id = {$sender_id}");
 $output = "";
 
 if (mysqli_num_rows($sql) == 1) {

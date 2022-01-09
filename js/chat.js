@@ -1,11 +1,27 @@
+window.addEventListener('beforeunload', function(e) {
+    e.preventDefault();
+    e.returnValue = 'onbeforeunload';
+});
+
 const sendBtn = document.querySelector('.send_btn'),
       form_message = document.querySelector('.form_message'),
       form = document.querySelector('.type_message'),
       chatBox = document.querySelector('.chat_box');
 let isSending = false;
+let isScrolling = false;
 
 form.addEventListener('click', function(e){
     e.preventDefault();
+});
+
+chatBox.addEventListener('scroll', function(){
+    isScrolling = true;
+    this.addEventListener('mouseover', function(){
+        isScrolling = true;
+    });
+    this.addEventListener('mouseout', function(){
+        isScrolling = false;
+    });
 });
 
 sendBtn.addEventListener('click', function(){
@@ -34,11 +50,81 @@ const getChat = setInterval(() => {
             if (xhr.status === 200) {
                 let data = xhr.response;
                 chatBox.innerHTML = data;
-                console.log(isSending);
-                // console.log(data);
+                !isScrolling ? scrollToBottom() : '';
             }
         }
     }
     let formData = new FormData(form);
     xhr.send(formData);
 }, 1000);
+function scrollToBottom() {
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+window.addEventListener('mouseover', function(){
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "../components/set-status.php", true);
+    xhr.onload = ()=> {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.response;
+                console.log(data);
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("status=Online");
+});
+window.addEventListener('mouseout', function(){
+    if (window.XMLHttpRequest) {   
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "../components/set-status.php", true);
+        xhr.onload = ()=> {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("user_id=" + getCookie('user_id'));
+    }
+});
+
+function getCookie(cName) {
+    let name = cName + '=';
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+}
+function checkCookie(name) {
+    let cName = getCookie(name);
+    if (cName != undefined && cName != 'signin') {
+        return true;
+    } else{
+        return false;
+    }
+}
+
+console.log("%c"+
+    "                                   _           \n"+
+    " _ __ ___ _ __ ___   _____   _____| |__   __ _ \n"+
+    "| '__/ _ \\ '_ ` _ \\ / _ \\ \\ / / _ \\ '_ \\ / _` |\n"+
+    "| | |  __/ | | | | | (_) \\ V /  __/ |_) | (_| |\n"+
+    "|_|  \\___|_| |_| |_|\\___/ \\_/ \\___|_.__/ \\__, |\n"+
+    "                                         |___/ \n"+
+    "\n"+
+    " 🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻\n"+
+    "\n"+
+    " [ Created by Uzcoin ]\n"+
+    " [  ➡️ https://github.com/Uzcoin404                 ]\n"+
+    " [  ➡️ uzcointg@gmail.com                     ]\n"
+  )

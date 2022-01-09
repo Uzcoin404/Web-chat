@@ -1,4 +1,16 @@
 <?
+if ($_GET['lang']) {   
+    setcookie("lang",$_GET['lang'], 2147483647, '/');
+    $lang = $_GET['lang'];
+} else {
+    if ($_COOKIE['lang']) {   
+        setcookie("lang",$_COOKIE['lang'], 2147483647, '/');
+        $lang = $_COOKIE['lang'];
+    } else {
+        setcookie("lang",'en', 2147483647, '/');
+    }
+}
+
 ob_start();
 include_once('db.php');
 $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -8,7 +20,7 @@ $password = mysqli_real_escape_string($conn, $_POST['password']);
 if (!empty($name) && !empty($phone) && !empty($password)) {
     $sql = mysqli_query($conn, "SELECT phone FROM users WHERE phone = '{$phone}'");
     if (mysqli_num_rows($sql) > 0) {
-        echo "$phone - This phone number is already exist!";
+        echo $lang=='uz' ? "$phone - Bu Telefon raqami band" : "$phone - This phone number is already exist!";
     } else{
         if (isset($_FILES['avatar']) && pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION)) {
             $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
@@ -23,18 +35,19 @@ if (!empty($name) && !empty($phone) && !empty($password)) {
                         $row = mysqli_fetch_assoc($sql3);
                         setcookie("phone", $row['phone'], time() + 3 * 24 * 60 * 60, "/");
                         setcookie("password", $row['password'], time() + 3 * 24 * 60 * 60, "/");
+                        setcookie("user_id", $row['user_id'], time() + 3 * 24 * 60 * 60, "/");
                         echo "success"; 
                     }
                 } else{
-                    echo "Something went wrong!";
+                    echo $lang=='uz' ? "Nimadir xato ketdi" : "Something went wrong!";
                 }
             }
         } else {
-            echo "Please upload your avatar";
+            echo $lang=='uz' ? "Iltimos avatar (rasm) Yuklang" : "Please upload your avatar";
         }
     }
 } else {
-    echo "All input field are required";
+    echo $lang=='uz' ? "Barcha bo'limlar to'ldirilishi shart" : "All input field are required";
 }
 ob_end_flush();
 ?>

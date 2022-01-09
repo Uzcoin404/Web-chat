@@ -5,7 +5,7 @@
         $receiver_id = mysqli_real_escape_string($conn, $_POST['receiver_id']);
         $output = "";
 
-        $sql = "SELECT * FROM messages LEFT JOIN users ON users.user_id = messages.sender_id WHERE (sender_id = {$sender_id} OR receiver_id = {$receiver_id}) AND (sender_id = {$receiver_id} OR receiver_id = {$sender_id}) ORDER BY messages.id";
+        $sql = "SELECT * FROM messages LEFT JOIN users ON users.user_id = messages.sender_id WHERE (sender_id = {$sender_id} AND receiver_id = {$receiver_id}) OR (sender_id = {$receiver_id} AND receiver_id = {$sender_id}) ORDER BY messages.id";
         $query = mysqli_query($conn, $sql);
         if (mysqli_num_rows($query) > 0) {
             while ($chat = mysqli_fetch_assoc($query)) {
