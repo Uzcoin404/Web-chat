@@ -32,7 +32,7 @@ sendBtn.addEventListener('click', function(){
     xhr.onload = ()=> {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                sendBtn.value = "";
+                form_message.value = "";
                 this.disabled = false;
                 isSending = false;
             }

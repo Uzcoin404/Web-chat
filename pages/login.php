@@ -19,6 +19,10 @@ include_once('header.php');
                 <p class="form_text"><?= $lang=='uz' ? "Hisobingiz yo'qmi ?" : "No account ?"?> <a href="../pages/register.php"><?= $lang=='uz' ? "Ro'yxatdan o'ting" : "Sign up now"?></a></p>
             </div>
         </form>
+        <div class="language">
+            <a href="?lang=uz" class="lang_uz <?= $lang=='uz'? "active" : "" ?>" title="O'zbekcha"><span>UZ</span></a>
+            <a href="?lang=en" class="lang_en <?= $lang=='en'||!$lang ? "active" : "" ?>" title="English"><span>EN</span></a>
+        </div>
     </div>
 
     <script src="../js/login.js?v=<?= time();?>"></script>

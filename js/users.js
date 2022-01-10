@@ -46,7 +46,7 @@ formSearch.addEventListener('input', function(){
     xhr.send("searchTerm=" + value);
 });
 
-setInterval(() => {
+// setInterval(() => {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "../components/users.php", true);
     xhr.onload = ()=> {
@@ -58,7 +58,7 @@ setInterval(() => {
         }
     }
     xhr.send();
-}, 1000);
+// }, 1000);
 
 
 window.addEventListener('mouseover', function(){
