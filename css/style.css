@@ -36,7 +36,7 @@ img{
     width: 420px;
     height: auto;
     padding: 30px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 20px;
     background: #fff;
 }
@@ -297,7 +297,7 @@ img{
     width: 420px;
     height: auto;
     padding: 30px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 20px;
     background: #fff;
 }
@@ -495,7 +495,7 @@ img{
 .incoming .message_details p{
     background: #fff;
     border-radius: 20px 20px 20px 0;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     color: #000;
 }
 .incoming .message_details{
@@ -514,13 +514,17 @@ img{
     width: 100%;
     height: 45px;
     font-size: 16px;
-    padding: 0 15px;
+    padding: 11px 15px;
     border: 2px solid #ccc;
     background: #fff;
     color: #222;
     border-radius: 10px;
     z-index: 1;
     transition: all .3s;
+    resize: none;
+}
+.form_message::-webkit-scrollbar{
+    width: 10px;
 }
 .send_btn{
     width: 60px;
@@ -552,7 +556,7 @@ img{
 .introduce{
     width: 420px;
     height: auto;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 20px;
     background: #fff;
     padding: 30px;

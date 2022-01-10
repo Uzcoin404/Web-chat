@@ -24,7 +24,7 @@ include_once('header.php');
             <form action="#" class="type_message" autocomplete="off">
                 <input type="hidden" name="sender_id" value="<?= $_SESSION['user_id']?>">
                 <input type="hidden" name="receiver_id" value="<?= $user['user_id']?>">
-                <input type="text" name="message" class="form_message" placeholder="<?= $lang=='uz' ? "Xabar jo'natish" : "Type message"?>">
+                <textarea name="message" maxlength="500" class="form_message" placeholder="<?= $lang=='uz' ? "Xabar jo'natish" : "Type message"?>"></textarea>
                 <button type="submit" class="btn form_btn send_btn"><i class="fab fa-telegram-plane" title="<?= $lang=='uz' ? "Jo'natish" : "Send"?>"></i></button>
             </form>
         </section>

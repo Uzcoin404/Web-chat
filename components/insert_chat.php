@@ -7,7 +7,7 @@
         $message = mysqli_real_escape_string($conn, $_POST['message']);
         
         if (!empty($message)) {
-            $sql = mysqli_query($conn, "INSERT INTO `messages` (`sender_id`, `receiver_id`, `message`, `date`) VALUES ({$sender_id},'{$receiver_id}','{$message}','[$date]')") or die();
+            $sql = mysqli_query($conn, "INSERT INTO `messages` (`sender_id`, `receiver_id`, `message`, `date`) VALUES ({$sender_id},'{$receiver_id}','{$message}','$date')") or die();
         }
     } else {
         header("Location: ../pages/login.php");

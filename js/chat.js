@@ -68,7 +68,6 @@ window.addEventListener('mouseover', function(){
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response;
-                console.log(data);
             }
         }
     }
@@ -114,17 +113,11 @@ function checkCookie(name) {
     }
 }
 
-console.log("%c"+
-    "                                   _           \n"+
-    " _ __ ___ _ __ ___   _____   _____| |__   __ _ \n"+
-    "| '__/ _ \\ '_ ` _ \\ / _ \\ \\ / / _ \\ '_ \\ / _` |\n"+
-    "| | |  __/ | | | | | (_) \\ V /  __/ |_) | (_| |\n"+
-    "|_|  \\___|_| |_| |_|\\___/ \\_/ \\___|_.__/ \\__, |\n"+
-    "                                         |___/ \n"+
+console.log(
     "\n"+
     " 🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻\n"+
     "\n"+
     " [ Created by Uzcoin ]\n"+
-    " [  ➡️ https://github.com/Uzcoin404                 ]\n"+
-    " [  ➡️ uzcointg@gmail.com                     ]\n"
+    " [  ➡️ https://github.com/Uzcoin404 ]\n"+
+    " [  ➡️ uzcointg@gmail.com ]\n"
   )
