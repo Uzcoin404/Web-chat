@@ -31,6 +31,10 @@ include_once('header.php');
             <div class="user_list"></div>
             <span class="phpMessage"></span>
         </section>
+        <div class="language">
+            <a href="?lang=uz" class="lang_uz <?= $lang=='uz'? "active" : "" ?>" title="O'zbekcha"><span>UZ</span></a>
+            <a href="?lang=en" class="lang_en <?= $lang=='en'||!$lang ? "active" : "" ?>" title="English"><span>EN</span></a>
+        </div>
     </div>
 
     <script src="../js/users.js?v=<?= time();?>"></script>

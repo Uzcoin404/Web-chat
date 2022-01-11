@@ -53,3 +53,12 @@ function setError(data) {
     errorMessage.innerHTML = data;
     errorMessage.style.display = 'block';
 }
+
+console.log(
+    "\n"+
+    " 🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻\n"+
+    "\n"+
+    " [ Created by Uzcoin ]\n"+
+    " [  ➡️ https://github.com/Uzcoin404 ]\n"+
+    " [  ➡️ uzcointg@gmail.com ]\n"
+)

@@ -13,3 +13,12 @@ introduce = document.querySelector('.introduce');
 nextBtn.addEventListener('click', function(){
     introduce.classList.add('active');
 });
+
+console.log(
+    "\n"+
+    " 🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻🐱‍💻\n"+
+    "\n"+
+    " [ Created by Uzcoin ]\n"+
+    " [  ➡️ https://github.com/Uzcoin404 ]\n"+
+    " [  ➡️ uzcointg@gmail.com ]\n"
+)

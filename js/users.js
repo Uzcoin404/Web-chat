@@ -120,4 +120,4 @@ console.log(
     " [ Created by Uzcoin ]\n"+
     " [  ➡️ https://github.com/Uzcoin404 ]\n"+
     " [  ➡️ uzcointg@gmail.com ]\n"
-  )
+)

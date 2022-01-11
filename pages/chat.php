@@ -28,6 +28,10 @@ include_once('header.php');
                 <button type="submit" class="btn form_btn send_btn"><i class="fab fa-telegram-plane" title="<?= $lang=='uz' ? "Jo'natish" : "Send"?>"></i></button>
             </form>
         </section>
+        <div class="language">
+            <a href="?lang=uz" class="lang_uz <?= $lang=='uz'? "active" : "" ?>" title="O'zbekcha"><span>UZ</span></a>
+            <a href="?lang=en" class="lang_en <?= $lang=='en'||!$lang ? "active" : "" ?>" title="English"><span>EN</span></a>
+        </div>
     </div>
 
     <script src="../js/chat.js?v=<?= time();?>"></script>

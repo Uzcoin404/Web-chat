@@ -24,7 +24,7 @@ while ($users = mysqli_fetch_assoc($sql)) {
     }
 
     (strlen($result) > 25 ? $message = substr($result, 0, 25).'...' : $message = $result);
-    $sender_id == $latestMsg['sender_id'] ? $myMsg = "You: " : $myMsg = '';
+    $sender_id == $latestMsg['sender_id'] ? $myMsg = $lang=='en' ? "You: " : "Siz: " : $myMsg = '';
     $users['status'] == "Offline" ? $status = "offline" : $status = "";
     $output .= ' <a href="../pages/chat.php?user_id='. $users['user_id']. '" class="user">
                     <div class="user_profile">
