@@ -1,4 +1,4 @@
-<?
+<?php
 include_once('db.php');
 $user_id = $_SESSION['user_id'];
 $unique_id = $_POST['user_id'];

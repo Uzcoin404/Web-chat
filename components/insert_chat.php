@@ -1,4 +1,4 @@
-<?
+<?php
     include_once('db.php');
     $date = date("H:i");
     if (isset($_SESSION['user_id'])) {

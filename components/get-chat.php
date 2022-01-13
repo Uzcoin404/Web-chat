@@ -1,4 +1,4 @@
-<?
+<?php
     include_once('db.php');
     if (isset($_SESSION['user_id'])) {
         $sender_id = mysqli_real_escape_string($conn, $_POST['sender_id']);

@@ -1,9 +1,24 @@
+window.addEventListener('beforeunload', function(e) {
+    let xhr = new XMLHttpRequest();
+        xhr.open("POST", "../components/set-status.php", true);
+        xhr.onload = ()=> {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("user_id=" + getCookie('user_id'));
+});
+
 const phpMessage = document.querySelector('.phpMessage');
 const userList = document.querySelector('.user_list');
 const searchIcon = document.querySelector('.search_icon');
 const searchCancel = document.querySelector('.search_cancel');
 const search = document.querySelector('.search');
 const formSearch = document.querySelector('.form_search');
+const profileStatus = document.querySelector('.profile_status');
 let isSearching = false;
 searchIcon.addEventListener('click', function(){
     search.classList.add('active');
@@ -46,7 +61,7 @@ formSearch.addEventListener('input', function(){
     xhr.send("searchTerm=" + value);
 });
 
-// setInterval(() => {
+setInterval(() => {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "../components/users.php", true);
     xhr.onload = ()=> {
@@ -58,30 +73,37 @@ formSearch.addEventListener('input', function(){
         }
     }
     xhr.send();
-// }, 1000);
-
-
-window.addEventListener('mouseover', function(){
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../components/set-status.php", true);
-    xhr.onload = ()=> {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                let data = xhr.response;
-            }
-        }
-    }
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("status=Online");
-});
-window.addEventListener('mouseout', function(){
-    if (window.XMLHttpRequest) {   
+}, 1000);
+let counter = 0
+document.addEventListener('mousemove', function(){
+    counter+=1
+    if (counter == 1) {
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "../components/set-status.php", true);
         xhr.onload = ()=> {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     let data = xhr.response;
+                    setTimeout(() => {
+                        counter = 0;
+                    }, 1500);
+                    profileStatus.innerText = "Online";
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("status=Online");
+    }
+});
+document.addEventListener('mouseout', function(event){
+    if (event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {  
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "../components/set-status.php", true);
+        xhr.onload = ()=> {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                    profileStatus.innerText = "Offline";
                 }
             }
         }

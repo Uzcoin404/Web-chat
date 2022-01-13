@@ -1,10 +1,8 @@
-<?
+<?php
 if ($_GET['lang']) {   
-    setcookie("lang",$_GET['lang'], 2147483647, '/');
     $lang = $_GET['lang'];
 } else {
     if ($_COOKIE['lang']) {   
-        setcookie("lang",$_COOKIE['lang'], 2147483647, '/');
         $lang = $_COOKIE['lang'];
     } else {
         setcookie("lang",'en', 2147483647, '/');

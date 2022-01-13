@@ -13,7 +13,7 @@ submitBtn.addEventListener('click', function(){
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response;
-                if (data.includes('success')) {
+                if (data == 'success') {
                     location.href = "../pages/login.php"
                 } else {
                     console.log(data);

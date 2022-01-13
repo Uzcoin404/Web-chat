@@ -1,4 +1,4 @@
-<?
+<?php
 if ($_GET['lang']) {   
     setcookie("lang",$_GET['lang'], 2147483647, '/');
     $lang = $_GET['lang'];

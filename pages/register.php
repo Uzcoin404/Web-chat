@@ -1,4 +1,6 @@
-<?
+<?php
+session_start();
+$_SESSION['user_id'] ? header('Location: ../pages/users.php') : '';
 include_once('header.php');
 ?> 
     <div class="wrapper">
@@ -48,7 +50,7 @@ include_once('header.php');
                             <input type="file" class="imgUploader" accept=".jpg, .jpeg, .png" name="avatar" tabindex="-1" hidden>
                             <div class="form_buttons">
                                 <button type="button" class="btn form_btn backBtn" tabindex="-1"><?= $lang=='en' ? "Back" : "Orqaga"?></button>
-                                <button type="submit" class="btn form_btn submitBtn" tabindex="-1"><?= $lang=='en' ? "Submit" : "Tasdiqlash"?></button>
+                                <button type="submit" class="btn form_btn submitBtn loading_btn" tabindex="-1"><?= $lang=='en' ? "Submit" : "Tasdiqlash"?> <div class="loadingio-spinner-dual-ring-tpx53pot6w9" id="loading_anim"><div class="ldio-3ci295fbb6x"><div></div><div><div></div></div></div></div></button>
                             </div>
                         </div>
                     </div>
@@ -58,6 +60,9 @@ include_once('header.php');
         <div class="language">
             <a href="?lang=uz" class="lang_uz <?= $lang=='uz'? "active" : "" ?>" title="O'zbekcha"><span>UZ</span></a>
             <a href="?lang=en" class="lang_en <?= $lang=='en'||!$lang ? "active" : "" ?>" title="English"><span>EN</span></a>
+        </div>
+        <div class="creator">
+            <p class="author_text">2022 <?= $lang=='en' ? "January | Created by <a href='https://github.com/Uzcoin404'>Uzcoin</a>" : "Yanvar | <a href='https://github.com/Uzcoin404'>Uzcoin</a> Tomonidan yaratildi"?></p>
         </div>
     </div>
 

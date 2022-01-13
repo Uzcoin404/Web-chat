@@ -1,4 +1,4 @@
-<?
+<?php
 include_once('../components/db.php');
 $myProfile = $_SESSION['user_id'];
 $myProfile ? '' : header("Location: ./login.php");
@@ -34,6 +34,9 @@ include_once('header.php');
         <div class="language">
             <a href="?lang=uz" class="lang_uz <?= $lang=='uz'? "active" : "" ?>" title="O'zbekcha"><span>UZ</span></a>
             <a href="?lang=en" class="lang_en <?= $lang=='en'||!$lang ? "active" : "" ?>" title="English"><span>EN</span></a>
+        </div>
+        <div class="creator">
+            <p class="author_text">2022 <?= $lang=='en' ? "January | Created by <a href='https://github.com/Uzcoin404'>Uzcoin</a>" : "Yanvar | <a href='https://github.com/Uzcoin404'>Uzcoin</a> Tomonidan yaratildi"?></p>
         </div>
     </div>
 

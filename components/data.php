@@ -1,10 +1,8 @@
-<?
+<?php
 if ($_GET['lang']) {   
-    setcookie("lang",$_GET['lang'], 2147483647, '/');
     $lang = $_GET['lang'];
 } else {
     if ($_COOKIE['lang']) {   
-        setcookie("lang",$_COOKIE['lang'], 2147483647, '/');
         $lang = $_COOKIE['lang'];
     } else {
         setcookie("lang",'en', 2147483647, '/');
@@ -25,8 +23,9 @@ while ($users = mysqli_fetch_assoc($sql)) {
 
     (strlen($result) > 25 ? $message = substr($result, 0, 25).'...' : $message = $result);
     $sender_id == $latestMsg['sender_id'] ? $myMsg = $lang=='en' ? "You: " : "Siz: " : $myMsg = '';
+    $title = $lang=='en' ? 'Click for Open chat' : 'Chatni ochish uchun bosing';
     $users['status'] == "Offline" ? $status = "offline" : $status = "";
-    $output .= '<a href="../pages/chat.php?user_id='. $users['user_id']. '" class="user" title="'. $lang=='uz' ? 'Chatni ochish uchun bosing' : 'Click for Open chat' .'">
+    $output .= '<a href="../pages/chat.php?user_id='. $users['user_id']. '" class="user" title="'. $title .'">
                     <div class="user_profile">
                         <img src="'. $users['avatar']. '" class="user_avatar" alt="">
                         <div class="user_details">

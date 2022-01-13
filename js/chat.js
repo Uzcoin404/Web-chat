@@ -1,15 +1,27 @@
 window.addEventListener('beforeunload', function(e) {
-    e.preventDefault();
-    e.returnValue = 'onbeforeunload';
+    let xhr = new XMLHttpRequest();
+        xhr.open("POST", "../components/set-status.php", true);
+        xhr.onload = ()=> {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("user_id=" + getCookie('user_id'));
 });
 
 const sendBtn = document.querySelector('.send_btn'),
       form_message = document.querySelector('.form_message'),
       form = document.querySelector('.type_message'),
+      userStatus = document.querySelector('.user_status'),
+      userId = document.querySelector('.user_id'),
       chatBox = document.querySelector('.chat_box');
 let isSending = false;
 let isScrolling = false;
 
+document.activeElement = form_message
 form.addEventListener('click', function(e){
     e.preventDefault();
 });
@@ -61,21 +73,63 @@ function scrollToBottom() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-window.addEventListener('mouseover', function(){
+setInterval(() => {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../components/set-status.php", true);
+    xhr.open("POST", "../components/get-status.php", true);
     xhr.onload = ()=> {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response;
+                data != 'error' ? userStatus.innerHTML = data : '';
             }
         }
     }
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("status=Online");
+    xhr.send("user_id=" + userId.value);
+}, 1500);
+
+let counter = 0
+document.addEventListener('mousemove', function(){
+    counter+=1
+    if (counter == 1) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "../components/set-status.php", true);
+        xhr.onload = ()=> {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                    setTimeout(() => {
+                        counter = 0;
+                    }, 1500);
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("status=Online");
+    }
 });
-window.addEventListener('mouseout', function(){
-    if (window.XMLHttpRequest) {   
+// For touch devices
+document.addEventListener('touchmove', function(){
+    counter+=1
+    if (counter == 1) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "../components/set-status.php", true);
+        xhr.onload = ()=> {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                    setTimeout(() => {
+                        counter = 0;
+                    }, 1500);
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("status=Online");
+    }
+});
+document.addEventListener('mouseout', function(event){
+    if (event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {  
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "../components/set-status.php", true);
         xhr.onload = ()=> {
@@ -88,6 +142,19 @@ window.addEventListener('mouseout', function(){
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send("user_id=" + getCookie('user_id'));
     }
+});
+document.addEventListener('touchcancel', function(event){
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "../components/set-status.php", true);
+    xhr.onload = ()=> {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.response;
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("user_id=" + getCookie('user_id'));
 });
 
 function getCookie(cName) {
@@ -120,4 +187,4 @@ console.log(
     " [ Created by Uzcoin ]\n"+
     " [  ➡️ https://github.com/Uzcoin404 ]\n"+
     " [  ➡️ uzcointg@gmail.com ]\n"
-  )
+)

@@ -1,4 +1,4 @@
-<?
+<?php
 include_once('db.php');
 $sender_id = $_SESSION['user_id'];
 $searchTerm = mysqli_real_escape_string($conn, $_POST['searchTerm']);
