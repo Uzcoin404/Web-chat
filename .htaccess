@@ -1,0 +1,36 @@
+Options -Indexes
+
+SetEnv TZ Asia/Tashkent
+
+ErrorDocument 404 /error/404.html
+
+# year
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|swf|mp3|mp4)$">
+Header set Cache-Control "public"
+Header set Expires "Thu, 15 Apr 2010 20:00:00 GMT"
+Header unset Last-Modified
+</FilesMatch>
+#2 hours
+<FilesMatch "\.(html|htm|xml|txt|xsl)$">
+Header set Cache-Control "max-age=7200, must-revalidate"
+</FilesMatch>
+<FilesMatch "\.(js|css)$">
+SetOutputFilter DEFLATE
+Header set Expires "Thu, 15 Apr 2010 20:00:00 GMT"
+</FilesMatch>
+
+<IfModule mod_gzip.c>
+    mod_gzip_on       Yes
+    mod_gzip_dechunk  Yes
+    mod_gzip_item_include file      \.(html?|txt|css|js|php|pl)$
+    mod_gzip_item_include handler   ^cgi-script$
+    mod_gzip_item_include mime      ^text/.*
+    mod_gzip_item_include mime      ^application/x-javascript.*
+    mod_gzip_item_exclude mime      ^image/.*
+    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{REQUEST_URI} !^/(wp-login.php|wp-admin/|wp-content/plugins/|wp-includes/).* [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.askapache.com.*$ [NC]
+RewriteRule \.(ico|pdf|flv|jpg|jpeg|mp3|mpg|mp4|mov|wav|wmv|png|gif|swf|css|js)$ - [F,NS,L]

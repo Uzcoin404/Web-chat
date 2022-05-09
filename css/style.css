@@ -608,6 +608,9 @@ img{
     display: flex;
     justify-content: center;    
 }
+.introduce_logo, .introduce_3d_img{
+    user-select: none;
+}
 .app_info_text{
     font-size: 18px;
     font-weight: 500;
@@ -668,6 +671,13 @@ img{
 .creator a:hover{
     letter-spacing: 1px;
     text-decoration: underline;
+}
+
+.language a{
+    transition: all .3s;
+}
+.language a:hover, .language a:focus{
+    transform: scale(0.9);
 }
 
 /* loading animation */
